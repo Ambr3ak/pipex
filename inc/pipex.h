@@ -1,0 +1,74 @@
+#ifndef PIPEX_H
+# define PIPEX_H
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <unistd.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+#include <time.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+
+typedef struct s_cmd
+{
+    char *exec;
+    char    *infile;
+    int     fd_in;
+    int     fd_out;
+    char *outfile;
+    char **cmd1;
+    char **cmd2;
+    char ***cmds;
+    int nb_cmds;
+
+    int check;
+}               t_cmd;
+
+typedef struct s_list
+{
+	void			*content;
+	struct s_list	*next;
+}				t_list;
+
+typedef struct s_glb
+{
+    t_list *ptrs;
+    t_cmd *cmd;
+
+    char **env;
+    char **path;
+    int path_i;
+    int check_path;
+}               t_glb;
+
+void	*lst_add(t_glb *glb, void *ptr);
+void	*malloc_list(t_glb *glb, int size);
+void	*free_malloc_lst(t_glb *glb);
+
+char	*ft_strchr(const char *s, int c);
+char	*ft_strdup(t_glb *glb, const char *s1);
+char	*ft_strjoin(t_glb *glb, char *s1, char *s2);
+int		ft_strlen(const char *s);
+char	*ft_strrchr(const char *s, int c);
+char	*ft_substr(t_glb *glb, char *s, unsigned int start, size_t len);
+void	*ft_memset(void *b, int c, size_t len);
+char	*ft_strdup_long(t_glb *glb, const char *s1, int size);
+t_list	*ft_lstnew(void *content);
+void	ft_lstadd_back(t_list **alst, t_list *new);
+void	ft_lstclear(t_list **lst, void (*del)(void *));
+void	ft_putstr_fd(char *s, int fd);
+void	ft_putnbr_fd(int n, int fd);
+void	ft_putchar_fd(char c, int fd);
+int	ft_strcmp(const char *s1, const char *s2, size_t n);
+char		**ft_split(char const *s, char c);
+
+void check_file(char *infile, t_glb *glb, int *check);
+void check_outfile(char *outfile, t_glb *glb);
+void check_exec(char *exec, t_glb *glb, int *check);
+void check_cmds(char *cmd1, char *cmd2, t_glb *glb, char **env);
+void check_cmds_bonus(char **argv, t_glb *glb, char **env);
+int starting_process(t_glb *glb, char **envp, t_cmd *cmd);
+#endif
