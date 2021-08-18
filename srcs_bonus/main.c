@@ -39,9 +39,9 @@ void init_struct(t_glb *global)
 void ft_error(t_glb *global)
 {
     if (global->check_path != global->cmd->nb_cmds)
-        printf ("Error\ncommand not found.");
+        ft_putstr_fd("Error\ncommand not found.", 1);
     else if (global->cmd->check != 0)
-        printf ("Error\nPlease execute \n\"./pipex infile cmd1 cmd2 outfile\".");
+        ft_putstr_fd("Error\nPlease execute \n\"./pipex infile cmd1 cmd2 cmd3 ... cmdn outfile\".", 1);
     free_malloc_lst(global);
     free(global);
 
@@ -50,7 +50,6 @@ void ft_error(t_glb *global)
 int main(int argc, char** argv, char **envp)
 {
     t_glb *global;
-    //int i = 0;
 
     global = malloc(sizeof(t_glb));
     global->ptrs = NULL;

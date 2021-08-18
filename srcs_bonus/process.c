@@ -1,6 +1,6 @@
 #include "../inc/pipex.h"
 
-void	close_fds(t_glb *glb, int **fd)
+void	close_fds_bonus(t_glb *glb, int **fd)
 {
 	int i = 0;
 	while (i < glb->cmd->nb_cmds - 1)
@@ -44,7 +44,7 @@ int starting_process(t_glb *glb, char **envp, t_cmd *cmd)
 		recup->i++;
 	}
 	last_child(glb, envp, recup);
-	close_fds(glb, recup->fd);
+	close_fds_bonus(glb, recup->fd);
 	wait_pid(recup, cmd);
 	return 0;
 }

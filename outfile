@@ -1,1 +1,10 @@
-5
+total 1632$
+drwxrwxr-x 2 user42 user42    4096 aoM-CM-;t  17 12:58 inc$
+-rw-rw-r-- 1 user42 user42      11 aoM-CM-;t  17 12:58 infile$
+drwxrwxr-x 2 user42 user42    4096 aoM-CM-;t  18 11:38 lib_cub$
+-rw-rw-r-- 1 user42 user42    1407 aoM-CM-;t  18 10:36 Makefile$
+-rwxrwxr-x 1 user42 user42     579 aoM-CM-;t  18 10:53 outfile$
+-rwxrwxr-x 1 user42 user42 1636032 aoM-CM-;t  18 11:39 pipex$
+drwxrwxr-x 2 user42 user42    4096 aoM-CM-;t  18 10:53 srcs$
+drwxrwxr-x 2 user42 user42    4096 aoM-CM-;t  18 11:39 srcs_bonus$
+-rwxrwxr-x 1 user42 user42     204 aoM-CM-;t  18 10:26 test$

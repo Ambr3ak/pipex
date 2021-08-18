@@ -12,11 +12,8 @@ void check_file(char *infile, t_glb *glb, int *check)
 
 void check_outfile(char *outfile, t_glb *glb)
 {
-	int err;
     glb->cmd->outfile = ft_strdup(glb, outfile);
 	glb->cmd->fd_out = open(glb->cmd->outfile, O_CREAT | O_WRONLY, 0777);
-	err = errno;
-	printf("%d\n", err);
 	if (glb->cmd->fd_out == -1)
 		glb->cmd->check = -3;
 }
@@ -27,25 +24,6 @@ void check_exec(char *exec, t_glb *glb, int *check)
         *check = -2;
     else
         glb->cmd->exec = ft_strdup(glb, exec);
-}
-
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
-{
-	unsigned int	i;
-	unsigned char	*str1;
-	unsigned char	*str2;
-
-	str1 = (unsigned char *)s1;
-	str2 = (unsigned char *)s2;
-	if (!n)
-		return (0);
-	i = 0;
-	while (i < n && str1[i] && str2[i] && str1[i] == str2[i])
-		i++;
-	if (i < n)
-		return (str1[i] - str2[i]);
-	else
-		return (0);
 }
 
 void init_path(char **env, t_glb *glb)
@@ -83,7 +61,6 @@ void	check_right_path(t_glb *glb, char **cmd)
 			*cmd = ft_strdup(glb, cp);
 			break;
 		}
-		free (cp);
 		i++;
 	}
 	glb->path_i = 0;
@@ -98,10 +75,4 @@ void check_cmds(char *cmd1, char *cmd2, t_glb *glb, char **env)
 	init_path(env, glb);
 	check_right_path(glb, &glb->cmd->cmd1[0]);
 	check_right_path(glb, &glb->cmd->cmd2[0]);
-	while (glb->path[i])
-	{
-		ft_putstr_fd(glb->path[i], 1);
-		printf("\n");
-		i++;
-	}
 }

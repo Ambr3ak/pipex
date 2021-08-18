@@ -10,7 +10,7 @@ int first_child(t_glb *glb, char **envp, t_rec *r)
 	{
 		dup2(glb->cmd->fd_in, STDIN_FILENO);
 		dup2(r->fd[r->i][1], STDOUT_FILENO);
-		close_fds(glb, r->fd);
+		close_fds_bonus(glb, r->fd);
 		execve(glb->cmd->cmds[r->i][0], glb->cmd->cmds[r->i],envp);
 	}
 	r->i++;
@@ -26,7 +26,7 @@ int middle_child(t_glb *glb, char **envp, t_rec *r)
 	{
 		dup2(r->fd[r->i - 1][0], STDIN_FILENO);
 		dup2(r->fd[r->i][1], STDOUT_FILENO);
-		close_fds(glb, r->fd);
+		close_fds_bonus(glb, r->fd);
 		execve(glb->cmd->cmds[r->i][0], glb->cmd->cmds[r->i], envp);
 	}
 	return (0);
@@ -41,7 +41,7 @@ int last_child(t_glb *glb, char **envp, t_rec *r)
 	{
 		dup2(r->fd[r->i - 1][0], STDIN_FILENO);
 		dup2(glb->cmd->fd_out, STDOUT_FILENO);
-		close_fds(glb, r->fd);
+		close_fds_bonus(glb, r->fd);
 		execve(glb->cmd->cmds[r->i][0], glb->cmd->cmds[r->i], envp);
 	}
 	return (0);

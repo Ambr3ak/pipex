@@ -62,15 +62,13 @@ char	*ft_strjoin(t_glb *glb, char *s1, char *s2);
 int		ft_strlen(const char *s);
 char	*ft_strrchr(const char *s, int c);
 char	*ft_substr(t_glb *glb, char *s, unsigned int start, size_t len);
-void	*ft_memset(void *b, int c, size_t len);
-char	*ft_strdup_long(t_glb *glb, const char *s1, int size);
 t_list	*ft_lstnew(void *content);
 void	ft_lstadd_back(t_list **alst, t_list *new);
 void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_putstr_fd(char *s, int fd);
-void	ft_putnbr_fd(int n, int fd);
 void	ft_putchar_fd(char c, int fd);
-int	ft_strcmp(const char *s1, const char *s2, size_t n);
+int     ft_strcmp(const char *s1, const char *s2, size_t n);
+int	ft_strncmp(const char *s1, const char *s2, size_t n);
 char		**ft_split(char const *s, char c);
 
 void check_file(char *infile, t_glb *glb, int *check);
@@ -79,11 +77,12 @@ void check_exec(char *exec, t_glb *glb, int *check);
 void check_cmds(char *cmd1, char *cmd2, t_glb *glb, char **env);
 void check_cmds_bonus(char **argv, t_glb *glb, char **env);
 int starting_process(t_glb *glb, char **envp, t_cmd *cmd);
+int starting_2_process(t_glb *glb, char **envp);
 
 int first_child(t_glb *glb, char **envp, t_rec *r);
 int middle_child(t_glb *glb, char **envp, t_rec *r);
 int last_child(t_glb *glb, char **envp, t_rec *r);
 void wait_pid(t_rec *recup, t_cmd *cmd);
-void	close_fds(t_glb *glb, int **fd);
+void	close_fds_bonus(t_glb *glb, int **fd);
 
 #endif
