@@ -48,6 +48,7 @@ typedef struct s_glb
 
     char **env;
     char **path;
+    char *limiter;
     int path_i;
     int check_path;
 }               t_glb;
@@ -84,5 +85,6 @@ int middle_child(t_glb *glb, char **envp, t_rec *r);
 int last_child(t_glb *glb, char **envp, t_rec *r);
 void wait_pid(t_rec *recup, t_cmd *cmd);
 void	close_fds_bonus(t_glb *glb, int **fd);
+
 
 #endif

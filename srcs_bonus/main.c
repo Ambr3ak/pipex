@@ -2,7 +2,6 @@
 
 void parse_cmd(char **str, char **env, t_glb *glb, t_cmd *cmd)
 {
-    
     check_file(str[1], glb, &cmd->check);
     check_cmds_bonus(str, glb, env);
     if (cmd->check == 0)

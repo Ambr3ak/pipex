@@ -11,8 +11,10 @@ void check_file(char *infile, t_glb *glb, int *check)
 
 void check_outfile(char *outfile, t_glb *glb)
 {
-    glb->cmd->outfile = ft_strdup(glb, outfile);
-	
+     glb->cmd->outfile = ft_strdup(glb, outfile);
+	glb->cmd->fd_out = open(glb->cmd->outfile, O_CREAT | O_WRONLY, 0777);
+	if (glb->cmd->fd_out == -1)
+		glb->cmd->check = -3;
 }
 
 void check_exec(char *exec, t_glb *glb, int *check)
