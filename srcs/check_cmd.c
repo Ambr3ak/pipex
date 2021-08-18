@@ -5,7 +5,7 @@ void check_file(char *infile, t_glb *glb, int *check)
 {
     glb->cmd->fd_in = open(infile, O_RDONLY);
     if (glb->cmd->fd_in == -1)
-        *check = -1;
+        *check = 0;
     else
         glb->cmd->infile = ft_strdup(glb, infile);
 }
@@ -37,7 +37,7 @@ void init_path(char **env, t_glb *glb)
 	{
 		if (!ft_strncmp(env[i], "PATH=", 5))
 		{
-			glb->path = ft_split(env[i] + 5, ':');
+			glb->path = ft_split(glb, env[i] + 5, ':');
 		}
 		i++;
 	}
@@ -68,10 +68,9 @@ void	check_right_path(t_glb *glb, char **cmd)
 
 void check_cmds(char *cmd1, char *cmd2, t_glb *glb, char **env)
 {
-	int i = 0;
 
-	glb->cmd->cmd1 = ft_split(cmd1, ' ');
-	glb->cmd->cmd2 = ft_split(cmd2, ' ');
+	glb->cmd->cmd1 = ft_split(glb, cmd1, ' ');
+	glb->cmd->cmd2 = ft_split(glb, cmd2, ' ');
 	init_path(env, glb);
 	check_right_path(glb, &glb->cmd->cmd1[0]);
 	check_right_path(glb, &glb->cmd->cmd2[0]);

@@ -69,7 +69,7 @@ void	ft_putstr_fd(char *s, int fd);
 void	ft_putchar_fd(char c, int fd);
 int     ft_strcmp(const char *s1, const char *s2, size_t n);
 int	ft_strncmp(const char *s1, const char *s2, size_t n);
-char		**ft_split(char const *s, char c);
+char		**ft_split( t_glb *glb, char const *s, char c);
 
 void check_file(char *infile, t_glb *glb, int *check);
 void check_outfile(char *outfile, t_glb *glb);

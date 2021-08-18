@@ -40,7 +40,7 @@ void ft_error(t_glb *global)
     if (global->check_path != 2)
         ft_putstr_fd("Error\ncommand not found.", 1);
     else if (global->cmd->check != 0)
-        ft_putstr_fd("Error\nPlease execute \n\"./pipex infile cmd1 cmd2 outfile\"." 1);
+        ft_putstr_fd("Error\nPlease execute \n\"./pipex infile cmd1 cmd2 outfile\".", 1);
     free_malloc_lst(global);
     free(global);
 

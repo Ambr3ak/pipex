@@ -12,9 +12,7 @@ void check_file(char *infile, t_glb *glb, int *check)
 void check_outfile(char *outfile, t_glb *glb)
 {
     glb->cmd->outfile = ft_strdup(glb, outfile);
-	glb->cmd->fd_out = open(glb->cmd->outfile, O_CREAT | O_WRONLY, 0777);
-	if (glb->cmd->fd_out == -1)
-		glb->cmd->check = -3;
+	
 }
 
 void check_exec(char *exec, t_glb *glb, int *check)
@@ -36,7 +34,7 @@ void init_path(char **env, t_glb *glb)
 	{
 		if (!ft_strncmp(env[i], "PATH=", 5))
 		{
-			glb->path = ft_split(env[i] + 5, ':');
+			glb->path = ft_split(glb, env[i] + 5, ':');
 		}
 		i++;
 	}
@@ -72,7 +70,7 @@ void check_cmds_bonus(char **argv, t_glb *glb, char **env)
 	glb->cmd->cmds = malloc_list(glb, sizeof(int **) * (glb->cmd->nb_cmds + 1));
 	while (i < glb->cmd->nb_cmds)
 	{
-		glb->cmd->cmds[i] = ft_split(argv[2 + i], ' ');
+		glb->cmd->cmds[i] = ft_split(glb, argv[2 + i], ' ');
 		i++;
 	}
 	glb->cmd->cmds[i] = NULL;

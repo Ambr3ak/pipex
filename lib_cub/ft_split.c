@@ -12,20 +12,6 @@
 
 #include "../inc/pipex.h"
 
-static char	**ft_free_dst(char **dst)
-{
-	int i;
-
-	i = 0;
-	while (dst[i])
-	{
-		free(dst[i]);
-		i++;
-	}
-	free(dst);
-	return (NULL);
-}
-
 static int	ft_count_str(char const *s, char c)
 {
 	int	i;
@@ -58,21 +44,22 @@ static int	ft_sstr(char const *s, char c, int i)
 	return (n);
 }
 
-static char	**ft_str_split(char c, int n, char const *s, char **dest)
+static char	**ft_str_split(char c, int n, char const *s, t_glb *glb)
 {
 	int	l;
 	int	i;
 	int	j;
+	char **dest;
 
 	i = 0;
 	j = 0;
+	dest = malloc_list(glb, (ft_count_str(s, c) + 1) * sizeof(char *));
 	while (j < n && s[i] != '\0')
 	{
 		l = 0;
 		while (s[i] == c)
 			i++;
-		if (!(dest[j] = malloc((ft_sstr(s, c, i) + 1) * sizeof(char))))
-			return (ft_free_dst(dest));
+		dest[j] = malloc_list(glb, (ft_sstr(s, c, i) + 1) * sizeof(char));
 		while (s[i] != c && s[i] != '\0')
 		{
 			dest[j][l++] = s[i++];
@@ -84,7 +71,7 @@ static char	**ft_str_split(char c, int n, char const *s, char **dest)
 	return (dest);
 }
 
-char		**ft_split(char const *s, char c)
+char		**ft_split(t_glb *glb, char const *s, char c)
 {
 	char	**dest;
 	int		n;
@@ -94,8 +81,6 @@ char		**ft_split(char const *s, char c)
 	if (!(s))
 		return (0);
 	n = ft_count_str(s, c);
-	if (!(dest = (char **)malloc((ft_count_str(s, c) + 1) * sizeof(char *))))
-		return (NULL);
-	dest = ft_str_split(c, n, s, dest);
+	dest = ft_str_split(c, n, s, glb);
 	return (dest);
 }
