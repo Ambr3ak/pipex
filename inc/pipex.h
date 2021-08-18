@@ -33,10 +33,18 @@ typedef struct s_list
 	struct s_list	*next;
 }				t_list;
 
+typedef struct s_rec
+{
+    int i;
+    int **fd;
+    int *id;
+}               t_rec;
+
 typedef struct s_glb
 {
     t_list *ptrs;
     t_cmd *cmd;
+    t_rec *recup;
 
     char **env;
     char **path;
@@ -71,4 +79,11 @@ void check_exec(char *exec, t_glb *glb, int *check);
 void check_cmds(char *cmd1, char *cmd2, t_glb *glb, char **env);
 void check_cmds_bonus(char **argv, t_glb *glb, char **env);
 int starting_process(t_glb *glb, char **envp, t_cmd *cmd);
+
+int first_child(t_glb *glb, char **envp, t_rec *r);
+int middle_child(t_glb *glb, char **envp, t_rec *r);
+int last_child(t_glb *glb, char **envp, t_rec *r);
+void wait_pid(t_rec *recup, t_cmd *cmd);
+void	close_fds(t_glb *glb, int **fd);
+
 #endif

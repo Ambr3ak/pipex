@@ -29,6 +29,7 @@ int	ft_strlen2(char **map)
 void init_struct(t_glb *global)
 {
     global->cmd = malloc_list(global, sizeof(t_cmd));
+    global->recup = malloc_list(global, sizeof(t_rec));
     global->cmd->check = 0;
     global->path_i = 0;
     global->check_path = 0;

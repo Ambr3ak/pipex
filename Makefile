@@ -20,6 +20,7 @@ SRCS	= ./srcs/main.c \
 SRCS_BONUS	= ./srcs_bonus/main.c \
 			./srcs_bonus/check_cmd.c \
 			./srcs_bonus/process.c \
+			./srcs_bonus/child_process.c \
 			./lib_cub/ft_strchr.c \
 			./lib_cub/ft_strdup.c \
 			./lib_cub/ft_substr.c \
@@ -58,6 +59,7 @@ bonus :	${OBJS_BONUS}
 
 clean	:	
 			rm -rf ${OBJS}
+			rm -rf ${OBJS_BONUS}
 
 fclean	:	clean
 			rm -rf ${NAME}
