@@ -46,10 +46,10 @@ static int	ft_sstr(char const *s, char c, int i)
 
 static char	**ft_str_split(char c, int n, char const *s, t_glb *glb)
 {
-	int	l;
-	int	i;
-	int	j;
-	char **dest;
+	int		l;
+	int		i;
+	int		j;
+	char	**dest;
 
 	i = 0;
 	j = 0;
@@ -71,7 +71,7 @@ static char	**ft_str_split(char c, int n, char const *s, t_glb *glb)
 	return (dest);
 }
 
-char		**ft_split(t_glb *glb, char const *s, char c)
+char	**ft_split(t_glb *glb, char const *s, char c)
 {
 	char	**dest;
 	int		n;

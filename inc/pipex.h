@@ -51,6 +51,7 @@ typedef struct s_glb
     char *limiter;
     int path_i;
     int check_path;
+    int err;
 }               t_glb;
 
 void	*lst_add(t_glb *glb, void *ptr);
@@ -72,7 +73,7 @@ int     ft_strcmp(const char *s1, const char *s2, size_t n);
 int	ft_strncmp(const char *s1, const char *s2, size_t n);
 char		**ft_split( t_glb *glb, char const *s, char c);
 
-void check_file(char *infile, t_glb *glb, int *check);
+void check_file(char *infile, t_glb *glb);
 void check_outfile(char *outfile, t_glb *glb);
 void check_exec(char *exec, t_glb *glb, int *check);
 void check_cmds(char *cmd1, char *cmd2, t_glb *glb, char **env);
@@ -85,6 +86,9 @@ int middle_child(t_glb *glb, char **envp, t_rec *r);
 int last_child(t_glb *glb, char **envp, t_rec *r);
 void wait_pid(t_rec *recup, t_cmd *cmd);
 void	close_fds_bonus(t_glb *glb, int **fd);
+
+void init_struct(t_glb *global);
+void	init_path(char **env, t_glb *glb);
 
 
 #endif

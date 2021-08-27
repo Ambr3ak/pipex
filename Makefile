@@ -3,6 +3,7 @@ NAME  = pipex
 SRCS	= ./srcs/main.c \
 			./srcs/check_cmd.c \
 			./srcs/process.c \
+			./srcs_bonus/init.c \
 			./lib_cub/ft_strchr.c \
 			./lib_cub/ft_strdup.c \
 			./lib_cub/ft_substr.c \
@@ -21,6 +22,7 @@ SRCS_BONUS	= ./srcs_bonus/main.c \
 			./srcs_bonus/check_cmd.c \
 			./srcs_bonus/process.c \
 			./srcs_bonus/child_process.c \
+			./srcs_bonus/init.c \
 			./lib_cub/ft_strchr.c \
 			./lib_cub/ft_strdup.c \
 			./lib_cub/ft_substr.c \
@@ -43,7 +45,7 @@ INC	=	-I inc
 
 CC	=	clang
 
-CFLAGS	=	-Wall -Werror -Wextra -g -fsanitize=address
+CFLAGS	=	-Wall -Werror -Wextra -g
 
 .c.o	:
 			${CC} ${CFLAGS} ${INC} -c $< -o ${<:.c=.o}

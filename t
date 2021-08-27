@@ -1,0 +1,16 @@
+inc
+infile
+lib_cub
+Makefile
+pipex
+srcs
+srcs_bonus
+t
+inc
+infile
+lib_cub
+Makefile
+pipex
+srcs
+srcs_bonus
+t
