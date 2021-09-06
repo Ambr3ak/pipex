@@ -41,7 +41,7 @@ void	ft_error(t_glb *global)
 	free(global);
 }
 
-int	main(int	argc, char **argv, char **envp)
+int	main(int argc, char **argv, char **envp)
 {
 	t_glb	*global;
 

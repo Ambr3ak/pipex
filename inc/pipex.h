@@ -89,6 +89,6 @@ void	close_fds_bonus(t_glb *glb, int **fd);
 
 void init_struct(t_glb *global);
 void	init_path(char **env, t_glb *glb);
-
+void	ft_error(t_glb *global);
 
 #endif

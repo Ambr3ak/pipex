@@ -8,8 +8,9 @@ int	first_child(t_glb *glb, char **envp, t_rec *r)
 		return (2);
 	if (r->id[r->i] == 0)
 	{
-		if (glb->cmd->fd_in != -1)
-			dup2(glb->cmd->fd_in, STDIN_FILENO);
+		if (glb->cmd->fd_in == -1)
+			ft_error(glb);
+		dup2(glb->cmd->fd_in, STDIN_FILENO);
 		dup2(r->fd[r->i][1], STDOUT_FILENO);
 		close_fds_bonus(glb, r->fd);
 		execve(glb->cmd->cmds[r->i][0], glb->cmd->cmds[r->i], envp);
@@ -42,6 +43,8 @@ int	last_child(t_glb *glb, char **envp, t_rec *r)
 		return (2);
 	if (r->id[r->i] == 0)
 	{
+		if (glb->cmd->fd_out == -1)
+			ft_error(glb);
 		dup2(r->fd[r->i - 1][0], STDIN_FILENO);
 		dup2(glb->cmd->fd_out, STDOUT_FILENO);
 		close_fds_bonus(glb, r->fd);
