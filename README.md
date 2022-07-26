@@ -33,6 +33,9 @@ To create a process, the use of `fork` is mandatory.
 
 ``` #include <unistd.h>    pid_t fork(); ```
 
-Every call of fork will create a new process and duplicste its memory. 
-for $n$ number of processes 
-$2^n = x$ processes.
+Every call of fork will create a new process and duplicate its memory. 
+
+For $n$ number of processes 
+$2^n = x$ processes
+
+
