@@ -26,3 +26,13 @@ Quand on utilise des pipes, il est important de comprendre comment les flux sont
 `stdout` is the default file descriptor where a process can write outputs.
 
 `stderr` is the standard error stream. It is the file descriptor where a process can write error messages.
+
+## Les processus
+
+To create a process, the use of `fork` is mandatory. 
+
+``` #include <unistd.h>
+    pid_t fork(); ```
+
+Every call of fork will create a new process and duplicste its memory. 
+
