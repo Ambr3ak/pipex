@@ -31,8 +31,8 @@ Quand on utilise des pipes, il est important de comprendre comment les flux sont
 
 To create a process, the use of `fork` is mandatory. 
 
-``` #include <unistd.h>
-    pid_t fork(); ```
+``` #include <unistd.h>    pid_t fork(); ```
 
 Every call of fork will create a new process and duplicste its memory. 
-
+for @n number of processes 
+$2^n = x$ processes.
