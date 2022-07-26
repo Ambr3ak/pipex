@@ -21,6 +21,8 @@ Exemple de commande avec STDIN redirection
 There are 3 data streams `stdin`, `stdout` and `stderr` map respectively to file descriptor 0,1 and 2.
 Quand on utilise des pipes, il est important de comprendre comment les flux sont rediriges. 
 
-stdin correspond au flux d´entree par default, principale le port d'ecoute du clavier. Certaines fonctions comme scanf l'utilise.
-stdout is the default file descriptor where a process can write outputs.
-stderr is the standard error stream. It is the file descriptor where a process can write error messages.
+`stdin` correspond au flux d´entree par default, principale le port d'ecoute du clavier. Certaines fonctions comme scanf l'utilise.
+
+`stdout` is the default file descriptor where a process can write outputs.
+
+`stderr` is the standard error stream. It is the file descriptor where a process can write error messages.
