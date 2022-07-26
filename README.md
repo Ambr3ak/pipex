@@ -14,7 +14,7 @@ Exemple de commandes bash avec pipe sans redirection d'entrée.
 
 
 Exemple de commande avec STDIN redirection
-``` < infile ls -l | wc -l < outfile ```
+``` < infile ls -l | wc -l > outfile ```
 
 ## Les redirections
 
